@@ -15,7 +15,7 @@
 			min-width: 100px;
 		}
 		td:last-child {
-			min-width: 400px;
+			min-width: 600px;
 		}
 	</style>
 	<title>php-oop-1</title>
@@ -62,16 +62,23 @@
 	}
 
 	$movies = [
-		new Movie('Star Wars', 				1977, ['director'=>'George Lucas']),
 		new Movie('Blade Runner', 			1982, ['director'=>'Ridley Scott']),
-		new Movie('Million Dollar Baby', 	2004, ['director'=>'Clint Eastwood'])
+		new Movie('Million Dollar Baby', 	2004, ['director'=>'Clint Eastwood']),
+		new Movie('Hamlet', 				1996, ['director'=>'Kenneth Branagh']),
+		new Movie('Star Wars', 				1977, ['director'=>'George Lucas'])
 	];
-
 	// var_dump($movies);
 
-	$movies[0]->cast = ['Mark Hamill','Harrison Ford', 'Carrie Fisher'];
-	$movies[1]->cast = ['Harrison Ford', 'Rutger Hauer'];
-	$movies[2]->cast = ['Hilary Swank', 'Clint Eastwood', 'Morgan Freeman'];
+	$movies[0]->cast = ['Harrison Ford', 'Rutger Hauer'];
+	$movies[1]->cast = ['Hilary Swank', 'Clint Eastwood', 'Morgan Freeman'];
+	$movies[2]->cast = ['Kenneth Branagh','Julie Christie', 'Derek Jacobi'];
+	$movies[3]->cast = ['Mark Hamill','Harrison Ford', 'Carrie Fisher'];
+
+	$movies[1]->crew['producer'] = 'Clint Eastwood';
+	$movies[1]->crew['score'] = 'Clint Eastwood';
+	// var_dump($movies[2]->crew);
+
+	$movies[2]->crew['screeplay'] = 'Kenneth Branagh';
 
 ?>	
 
@@ -98,9 +105,9 @@
 				<td>crew</td>
 				<td>
 					<?php 
-						$lastCrew = end($movie->crew);
+						$lastKey = array_key_last($movie->crew);
 						foreach ($movie->crew as $key => $person) {
-							echo $person.' ('.$key.')'.($person==$lastCrew?'':', ');
+							echo $person.' ('.$key.')'.($key==$lastKey?'':', ');
 						}			
 					?>
 				</td>
