@@ -78,7 +78,7 @@
 	$movies[1]->crew['score'] = 'Clint Eastwood';
 	// var_dump($movies[2]->crew);
 
-	$movies[2]->crew['screeplay'] = 'Kenneth Branagh';
+	$movies[2]->crew['screenplay'] = 'Kenneth Branagh';
 
 ?>	
 
